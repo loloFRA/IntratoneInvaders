@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, , user-scalable=no">	
+		<title>Intratone invaders</title>
+		<link href="css/intratone_invaders.css" rel="stylesheet">
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+        	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        	<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+		<script src="https://www.gstatic.com/firebasejs/10.3.0/firebase-app-compat.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/10.3.0/firebase-firestore-compat.js"></script>
+	</head>
+	<body  class="notranslate" >
+		<div id="container_canvas">
+			<canvas id="canvas"></canvas>
+		</div>
+		<div id="infos_prod"></div>
+		<span id="Fps"></span>
+		<div id="div_start">
+	            <div id="title_game"> Intratone <br><br> invaders</div>
+	            <div id="div_play" onclick="startGame()">PLAY</div>
+	            <div id="div_score" onclick="openScore()">SCORES</div>
+	            <div id="div_about">?</div>
+	        </div>
+		<div id="div_post_score">
+	            <div id="close_post" onclick="closePost()">X</div>
+	            <div id="title_post">PUBLIER VOTRE SCORE</div>
+	            <input id="nom_post" placeholder="NOM ">
+	            <div id="valid_post" onclick="postScore()">Valider</div>
+        	</div>
+		<div id="div_score_infos">
+            <div id="close_score" onclick="closeScore()">Fermer</div>
+            <div id="cont_score"></div>
+            <div id="switch_info">
+                <p style="margin-right:10px;font-size:1.2em;">Trier</p>
+                 <input type="radio" id="radio_score" name="select_tri" value="Score" checked>
+                 <label for="radio_score" style="margin-right:10px">Score</label>
+                 
+                 <input type="radio" id="radio_nom" name="select_tri" value="Nom" >
+                 <label for="radio_nom">Nom</label>
+            </div>
+        </div>
+		<script src="js/intratone_invaders.js"></script>
+	</body>
+</html>
