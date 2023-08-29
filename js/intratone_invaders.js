@@ -208,9 +208,9 @@ const startGame = () =>  {
 	score = 0
 	life = 5
 	nbrLoopBadges = 2
-    	intervalBadges = setInterval(createBadges,1200)
-	intervalShoots = setInterval(createShoot, 200)
-	intervalLife = setInterval(createLife, 20000)
+    	intervalBadges = setInterval(createBadges,1500)
+	intervalShoots = setInterval(createShoot, 250)
+	intervalLife = setInterval(createLife, 25000)
 	requestAnimationFrame(animate); 
 }
 
@@ -248,6 +248,8 @@ const init = () => {
 	initFirebase()
 	setDivStart()
 	initCanvas()
+	createImgsBadges()
+	createImgsPlaques()
 	createStars()
 	createSuperStar()
 	stars.forEach(x => x.update())
@@ -259,8 +261,6 @@ const init = () => {
 	eventsRadioScores()
 	mouse = W/2 
 	player = new Player(W/2-playerSize/2, H-groundMargin-playerSize-5, playerSize)
-	createImgsBadges()
-	createImgsPlaques()
 }
 
 
