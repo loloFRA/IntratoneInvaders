@@ -2,7 +2,7 @@
 let c, ctx, W, H, lastTimeCalled, fps;;
 let stars = [], shootingStars = [],  shoots = [], imagesBadges = [], badges = [], imagePlaques = [], plaques = [],  booms = [] 
 let superstar 
-let playerImg, imageLife, player, playerSize = 50, mouse
+let playerImg, imageLife, player, playerSize = 50, mouse = 0
 let score = 0, life = 5, divStart
 let intervalBadges, intervalShoots, intervalLife
 let play = true
@@ -117,14 +117,19 @@ const createBooms = (x, y, r, color) => {
 const eventsPlayer = () => {
 	c.addEventListener("mousemove", function(event){
 		mouse = event.clientX + (W-innerWidth)/2;
-	});
-
-	c.addEventListener("touchmove", function(event){
-		event.preventDefault();
+	}, false);
+	
+	c.addEventListener("touchstart", function(event){
 		var touch = event.changedTouches[0];
 		var touchX = parseInt(touch.clientX) + (W-innerWidth)/2;
 		mouse = touchX;
-	});
+	}, false);
+	
+	c.addEventListener("touchmove", function(event){
+		var touch = event.changedTouches[0];
+		var touchX = parseInt(touch.clientX) + (W-innerWidth)/2;
+		mouse = touchX;
+	}, false);
 }
 
 const eventsRadioScores = () => {
