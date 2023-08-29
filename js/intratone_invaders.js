@@ -1,3 +1,4 @@
+"use strict";
 let c, ctx, W, H, lastTimeCalled, fps;;
 let stars = [], shootingStars = [],  shoots = [], imagesBadges = [], badges = [], imagePlaques = [], plaques = [],  booms = [] 
 let superstar 
