@@ -171,7 +171,7 @@ const postScore = () => {
             nom: name.toLowerCase(),
             score: score,
             timestamp: firebase.firestore.FieldValue.serverTimestamp()
-        })
+        }).catch((error) => {});
         closePost()
     }
     
@@ -187,7 +187,7 @@ const getScoreDBbyScore = () => {
         querySnapshot.forEach((doc) => {
             cont_score.innerHTML += `<div class="r_score"> <div class="r_score_pos">` + pos + `</div>` + `<div class="r_score_name">` + doc.data().nom + `</div>` + `<div class="r_score_score">` + doc.data().score + `</div></div>`
             pos++
-        });
+        }).catch((error) => {});
     })
 }
 const getScoreDBbyname = () => {
@@ -200,7 +200,7 @@ const getScoreDBbyname = () => {
         querySnapshot.forEach((doc) => {
         cont_score.innerHTML += `<div class="r_score"> <div class="r_score_pos">` + pos + `</div>` + `<div class="r_score_name">` + doc.data().nom + `</div>` + `<div class="r_score_score">` + doc.data().score + `</div></div>`
             pos++
-        });
+        }).catch((error) => {});
     })
 }
 // init settings
@@ -210,9 +210,7 @@ const newConnexion = () => {
     	var docRef = db.collection("cnxs").doc("U2h3zAvp79RPhCqnxrbF");  
         docRef.update({
             game: firebase.firestore.FieldValue.increment(1)
-        })
-        .then(() => {})
-        .catch((error) => {});
+        }).catch((error) => {});
 }
 
 const startGame = () =>  {
