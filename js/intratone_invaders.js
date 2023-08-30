@@ -185,7 +185,7 @@ const getScoreDBbyScore = () => {
     db.collection("scores").orderBy("score", "desc").limit(100).get()
     .then((querySnapshot) => {
         querySnapshot.forEach((doc) => {
-            cont_score.innerHTML += `<div class="r_score"> <div class="r_score_pos">` + pos + `</div>` + `<div class="r_score_name">` + doc.data().nom + `</div>` + `<div class="r_score_score">` + doc.data().score + `</div></div>`
+            cont_score.innerHTML += `<div class="r_score"> <div class="r_score_pos">` + pos + `</div>` + `<div class="r_score_name">` + doc.data().nom.charAt(0).toUpperCase() + doc.data().nom.slice(1) + `</div>` + `<div class="r_score_score">` + doc.data().score + `</div></div>`
             pos++
         }).catch((error) => {});
     })
@@ -198,7 +198,7 @@ const getScoreDBbyname = () => {
     db.collection("scores").orderBy('nom').limit(100).get()
     .then((querySnapshot) => {
         querySnapshot.forEach((doc) => {
-        cont_score.innerHTML += `<div class="r_score"> <div class="r_score_pos">` + pos + `</div>` + `<div class="r_score_name">` + doc.data().nom + `</div>` + `<div class="r_score_score">` + doc.data().score + `</div></div>`
+        cont_score.innerHTML += `<div class="r_score"> <div class="r_score_pos">` + pos + `</div>` + `<div class="r_score_name">` + doc.data().nom.charAt(0).toUpperCase() + doc.data().nom.slice(1) + `</div>` + `<div class="r_score_score">` + doc.data().score + `</div></div>`
             pos++
         }).catch((error) => {});
     })
