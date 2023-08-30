@@ -204,7 +204,19 @@ const getScoreDBbyname = () => {
     })
 }
 // init settings
+
+const newConnexion = () => {
+    	var db = firebase.firestore();
+    	var docRef = db.collection("cnxs").doc("U2h3zAvp79RPhCqnxrbF");  
+        docRef.update({
+            game: firebase.firestore.FieldValue.increment(1)
+        })
+        .then(() => {})
+        .catch((error) => {});
+}
+
 const startGame = () =>  {
+	newConnexion()
    	divStart.style.top = "-100%"
     	play = true
 	shoots = []
