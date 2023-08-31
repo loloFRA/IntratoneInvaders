@@ -169,10 +169,8 @@ const openScore = () => {
 
 const postScore = () => {
     let name = document.getElementById("nom_post").value
-    if(name!=''){
-	    
-        const db = firebase.firestore();
-    
+    if(name!=''){	    
+        const db = firebase.firestore();    
         db.collection("scores").add({
             nom: name.toLowerCase(),
             score: score,
@@ -190,10 +188,12 @@ const getScoreDBbyScore = () => {
     const db = firebase.firestore();
     db.collection("scores").orderBy("score", "desc").limit(100).get()
     .then((querySnapshot) => {
+	    let setTVal = 1
         querySnapshot.forEach((doc) => {
 		setTimeout(()=>{
-           		 cont_score.innerHTML += `<div class="r_score"> <div class="r_score_pos">` + pos + `</div>` + `<div class="r_score_name">` + doc.data().nom.charAt(0).toUpperCase() + doc.data().nom.slice(1) + `</div>` + `<div class="r_score_score">` + doc.data().score + `</div></div>`
-		},pos*20)
+           		 cont_score.innerHTML += `<div class="r_score"> <div class="r_score_pos">` + setTVal + `</div>` + `<div class="r_score_name">` + doc.data().nom.charAt(0).toUpperCase() + doc.data().nom.slice(1) + `</div>` + `<div class="r_score_score">` + doc.data().score + `</div></div>`
+			 setTVal++
+		},pos*40)
 		pos++
         }).catch((error) => {});
     })
@@ -205,10 +205,12 @@ const getScoreDBbyname = () => {
     const db = firebase.firestore();
     db.collection("scores").orderBy('nom').limit(100).get()
     .then((querySnapshot) => {
+	    let setTVal = 1
         querySnapshot.forEach((doc) => {
 		setTimeout(()=>{
-        		cont_score.innerHTML += `<div class="r_score"> <div class="r_score_pos">` + pos + `</div>` + `<div class="r_score_name">` + doc.data().nom.charAt(0).toUpperCase() + doc.data().nom.slice(1) + `</div>` + `<div class="r_score_score">` + doc.data().score + `</div></div>`
-                },pos*20) 
+        		cont_score.innerHTML += `<div class="r_score"> <div class="r_score_pos">` + setTVal + `</div>` + `<div class="r_score_name">` + doc.data().nom.charAt(0).toUpperCase() + doc.data().nom.slice(1) + `</div>` + `<div class="r_score_score">` + doc.data().score + `</div></div>`
+                	setTVal++
+		},pos*40) 
 		pos++
         }).catch((error) => {});
     })
