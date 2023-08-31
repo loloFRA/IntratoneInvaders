@@ -23,11 +23,11 @@ body {
 	overflow:hidden;
 	user-select: none;
 	-webkit-user-select : none;
-	 background-color: black;
+	 background: rgb(2,0,36);
+	background: linear-gradient(180deg, rgb(52, 0, 56) 0%, rgb(34, 0, 40) 35%, rgb(0, 0, 25) 100%);
 	 display: flex;
 	 justify-content: center;
 	 align-items: center;
-	background: linear-gradient(180deg, rgb(52, 0, 56) 0%, rgb(34, 0, 40) 35%, rgb(0, 0, 25) 100%);
 }
 #container_canvas{
 	z-index: 1;
