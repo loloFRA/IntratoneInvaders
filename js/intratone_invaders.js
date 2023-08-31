@@ -164,7 +164,7 @@ const openScore = () => {
     div_score_infos.style.top= "0%"
     div_score_infos.style.opacity= "1"
     divStart.style.top = "300%"
-    divStart.style.opacity = "1"
+    divStart.style.opacity = "0"
 }
 
 const postScore = () => {
@@ -227,7 +227,8 @@ const newConnexion = () => {
 
 const startGame = () =>  {
 	newConnexion()
-   	divStart.style.top = "-100%"
+   	divStart.style.top = "-300%"
+	divStart.style.opacity = "0"
     	play = true
 	shoots = []
 	badges = []
