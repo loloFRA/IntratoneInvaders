@@ -146,19 +146,25 @@ const eventsRadioScores = () => {
 
 // commands scoreboard 
 const closePost = () => {
-    div_post_score.style.top= "200%"
+    div_post_score.style.top= "300%"
+    div_post_score.style.opacity= "0"
     divStart.style.top = "0%"
+    divStart.style.opacity = "1"
 }
 
 const closeScore = () => {
-    div_score_infos.style.top= "-200%"
+    div_score_infos.style.top= "-300%"
+    div_score_infos.style.opacity= "0"
     divStart.style.top = "0%"
+    divStart.style.opacity = "1"
 }
 
 const openScore = () => {
     getScoreDBbyScore()
     div_score_infos.style.top= "0%"
-    divStart.style.top = "200%"
+    div_score_infos.style.opacity= "1"
+    divStart.style.top = "300%"
+    divStart.style.opacity = "1"
 }
 
 const postScore = () => {
@@ -185,8 +191,10 @@ const getScoreDBbyScore = () => {
     db.collection("scores").orderBy("score", "desc").limit(100).get()
     .then((querySnapshot) => {
         querySnapshot.forEach((doc) => {
-            cont_score.innerHTML += `<div class="r_score"> <div class="r_score_pos">` + pos + `</div>` + `<div class="r_score_name">` + doc.data().nom.charAt(0).toUpperCase() + doc.data().nom.slice(1) + `</div>` + `<div class="r_score_score">` + doc.data().score + `</div></div>`
-            pos++
+		setTimeout(()=>{
+           		 cont_score.innerHTML += `<div class="r_score"> <div class="r_score_pos">` + pos + `</div>` + `<div class="r_score_name">` + doc.data().nom.charAt(0).toUpperCase() + doc.data().nom.slice(1) + `</div>` + `<div class="r_score_score">` + doc.data().score + `</div></div>`
+		},100)
+		pos++
         }).catch((error) => {});
     })
 }
@@ -198,8 +206,10 @@ const getScoreDBbyname = () => {
     db.collection("scores").orderBy('nom').limit(100).get()
     .then((querySnapshot) => {
         querySnapshot.forEach((doc) => {
-        cont_score.innerHTML += `<div class="r_score"> <div class="r_score_pos">` + pos + `</div>` + `<div class="r_score_name">` + doc.data().nom.charAt(0).toUpperCase() + doc.data().nom.slice(1) + `</div>` + `<div class="r_score_score">` + doc.data().score + `</div></div>`
-            pos++
+		setTimeout(()=>{
+        		cont_score.innerHTML += `<div class="r_score"> <div class="r_score_pos">` + pos + `</div>` + `<div class="r_score_name">` + doc.data().nom.charAt(0).toUpperCase() + doc.data().nom.slice(1) + `</div>` + `<div class="r_score_score">` + doc.data().score + `</div></div>`
+                },100) 
+		pos++
         }).catch((error) => {});
     })
 }
