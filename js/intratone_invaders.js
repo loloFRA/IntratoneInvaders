@@ -193,7 +193,7 @@ const getScoreDBbyScore = () => {
         querySnapshot.forEach((doc) => {
 		setTimeout(()=>{
            		 cont_score.innerHTML += `<div class="r_score"> <div class="r_score_pos">` + pos + `</div>` + `<div class="r_score_name">` + doc.data().nom.charAt(0).toUpperCase() + doc.data().nom.slice(1) + `</div>` + `<div class="r_score_score">` + doc.data().score + `</div></div>`
-		},100)
+		},pos*20)
 		pos++
         }).catch((error) => {});
     })
@@ -208,7 +208,7 @@ const getScoreDBbyname = () => {
         querySnapshot.forEach((doc) => {
 		setTimeout(()=>{
         		cont_score.innerHTML += `<div class="r_score"> <div class="r_score_pos">` + pos + `</div>` + `<div class="r_score_name">` + doc.data().nom.charAt(0).toUpperCase() + doc.data().nom.slice(1) + `</div>` + `<div class="r_score_score">` + doc.data().score + `</div></div>`
-                },100) 
+                },pos*20) 
 		pos++
         }).catch((error) => {});
     })
@@ -298,6 +298,7 @@ const stopGame = () => {
 	booms = [] 
     	//divStart.style.top = "0%"
 	div_post_score.style.top = "0%"
+	div_post_score.style.opcity = "1"
     	title_game.innerHTML = `GAME OVER<br><br><span id="span_score">SCORE: ` +  score + `</span> `
 	clearInterval(intervalBadges);
 	clearInterval(intervalShoots);
