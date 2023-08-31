@@ -1,5 +1,5 @@
 "use strict";
-let c, ctx, W, H, lastTimeCalled, fps;;
+let c, ctx, W, H, lastTimeCalled, fps;
 let stars = [], shootingStars = [],  shoots = [], imagesBadges = [], badges = [], imagePlaques = [], plaques = [],  booms = [] 
 let superstar 
 let playerImg, imageLife, player, playerSize = 50, mouse = 0
