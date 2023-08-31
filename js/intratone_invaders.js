@@ -193,7 +193,7 @@ const getScoreDBbyScore = () => {
 		setTimeout(()=>{
            		 cont_score.innerHTML += `<div class="r_score"> <div class="r_score_pos">` + setTVal + `</div>` + `<div class="r_score_name">` + doc.data().nom.charAt(0).toUpperCase() + doc.data().nom.slice(1) + `</div>` + `<div class="r_score_score">` + doc.data().score + `</div></div>`
 			 setTVal++
-		},pos*40)
+		},pos*20)
 		pos++
         }).catch((error) => {});
     })
@@ -210,7 +210,7 @@ const getScoreDBbyname = () => {
 		setTimeout(()=>{
         		cont_score.innerHTML += `<div class="r_score"> <div class="r_score_pos">` + setTVal + `</div>` + `<div class="r_score_name">` + doc.data().nom.charAt(0).toUpperCase() + doc.data().nom.slice(1) + `</div>` + `<div class="r_score_score">` + doc.data().score + `</div></div>`
                 	setTVal++
-		},pos*40) 
+		},pos*20) 
 		pos++
         }).catch((error) => {});
     })
@@ -298,9 +298,8 @@ const stopGame = () => {
 	badges = []
 	plaques = []
 	booms = [] 
-    	//divStart.style.top = "0%"
 	div_post_score.style.top = "0%"
-	div_post_score.style.opcity = "1"
+	div_post_score.style.opacity = "1"
     	title_game.innerHTML = `GAME OVER<br><br><span id="span_score">SCORE: ` +  score + `</span> `
 	clearInterval(intervalBadges);
 	clearInterval(intervalShoots);
