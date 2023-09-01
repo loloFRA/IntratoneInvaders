@@ -236,6 +236,7 @@ const startGame = () =>  {
 	booms = [] 
 	score = 0
 	life = 5
+	lifePlaque = 2
 	nbrLoopBadges = 2
     	intervalBadges = setInterval(createBadges,1500)
 	intervalShoots = setInterval(createShoot, 250)
