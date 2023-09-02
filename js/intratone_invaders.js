@@ -8,7 +8,6 @@ let intervalBadges, intervalShoots, intervalLife
 let play = true
 let groundMargin = 60
 let nbrLoopBadges =2, posSrcPlaque=0, lifePlaque=2
-let pixelRatio
 
 let checkVibrate = window.navigator && window.navigator.vibrate;
 
@@ -88,7 +87,7 @@ const createShoot = () => {
 
 const createBadges = () => {
 	for(let i=0; i<nbrLoopBadges; i++){
-		let r = 30 / pixelRatio
+		let r = 30 
 		let x = ~~random(W-r, r/2)
 		let y = -60
 		let speed = ~~random(4,1) 
@@ -99,7 +98,7 @@ const createBadges = () => {
 }
 
 const createLife = () => {
-	let r = 40 / pixelRatio
+	let r = 40 
 	let x = ~~random(W-r, r/2)
 	let y = -60
 	let speed = random(5,2) 
@@ -107,8 +106,8 @@ const createLife = () => {
 }
 
 const createPlaque = (nbr, l) => {
-	let w = 40 / pixelRatio
-	let h = 100 / pixelRatio
+	let w = 40 
+	let h = 100
 	let x = ~~random(W-w, w/2)
 	let y = ~~random(-150, -100)
 	let speed = 2
@@ -280,13 +279,14 @@ const initFirebase = () => {
     	firebase.initializeApp(firebaseConfig);
 }
 
-const detectDevicePixelRatio = () => {
+/*const detectDevicePixelRatio = () => {
     if (window.devicePixelRatio) {
         return window.devicePixelRatio;
     } else {
         return 1; 
     }
 }
+*/
 
 
 const init = () => {
@@ -294,7 +294,7 @@ const init = () => {
 	fps = document.getElementById("Fps");
 	W = window.innerWidth <500 ? window.innerWidth : 500
 	H = window.innerHeight;	
-	pixelRatio = detectDevicePixelRatio();
+	//pixelRatio = detectDevicePixelRatio();
 	initFirebase()
 	setDivStart()
 	initCanvas()
@@ -311,7 +311,7 @@ const init = () => {
 	eventsPlayer()
 	eventsRadioScores()
 	mouse = W/2 
-	player = new Player(W/2-playerSize/2, H-groundMargin-playerSize-5, playerSize/pixelRatio)
+	player = new Player(W/2-playerSize/2, H-groundMargin-playerSize-5, playerSize)
 }
 
 
