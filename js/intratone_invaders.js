@@ -68,12 +68,21 @@ const createSuperStar = () => {
 	setTimeout(createSuperStar, time)
 }
 
+const poolShoots = () =>{
+        for(let i=0 ;i<H;i+=10){
+            shoots.push(new Shoot(0, 0, 2))
+        }
+}
+
 const createShoot = () => {
-		let x = player.x
-		let y = player.y
-		let r = 2
-		let speed = 7 
-		shoots.push(new Shoot(x, y, r, speed))
+        for(let i=0 ;i<shoots.length;i++){
+           if(shoots[i].d == false){
+               shoots[i].d = true
+               shoots[i].x = player.x
+		       shoots[i].y = player.y             
+               break;
+           }
+        }
 }
 
 const createBadges = () => {
@@ -282,6 +291,7 @@ const init = () => {
 	createImgsPlaques()
 	createStars()
 	createSuperStar()
+	poolShoots()
 	stars.forEach(x => x.update())
 	playerImg = new Image();
 	playerImg.src = imagePlayerSrc;
@@ -343,11 +353,11 @@ const collisionPlaquePlayer = (a, b) => {
 const check = () => {
 	// check badge / shoot
 	for(let j = shoots.length-1; j >= 0; j--){
-	   if(shoots[j]){
+	   if(shoots[j].d){
 		shoots[j].update();
 		// check shoot / ground
 		if(shoots[j].y < 0){
-			shoots.splice(j, 1)
+			shoots[j].d = false
 			break;
 		}
 		// check plaque / shoot
@@ -362,13 +372,13 @@ const check = () => {
 						
 						score+=1
 						plaques.splice(0, 1);   
-						shoots.splice(j, 1);
+						shoots[j].d = false
 						break;
 						
 					}
 					else{
 						score+=1
-						shoots.splice(j, 1);
+						shoots[j].d = false
 						plaques[0].life--
 						break;
 					}
@@ -381,14 +391,14 @@ const check = () => {
 					if(badges[i].type=="life"){
 						createBooms(badges[i].x+badges[i].r/2, badges[i].y+badges[i].r/2, 4, "white")
 						badges.splice(i, 1);
-						shoots.splice(j, 1);
+						shoots[j].d = false
 						life++
 						break;
 					} 
 					else{
 						createBooms(badges[i].x+badges[i].r/2, badges[i].y+badges[i].r/2, 4,"white")
 						badges.splice(i, 1);
-						shoots.splice(j, 1);
+						shoots[j].d = false
 						score+=1
 						if(score%30==0&&score!=0){
 		                            		createPlaque(posSrcPlaque, lifePlaque)
@@ -643,9 +653,9 @@ class Player extends Dot{
 }
 
 class Shoot extends Dot{
-	constructor(x,y,r, speed) {
+	constructor(x,y,r) {
 		super(x,y,r);
-		this.speed = speed
+        this.d = false
 	}
 	draw() {
 		ctx.beginPath()
@@ -653,9 +663,11 @@ class Shoot extends Dot{
 		ctx.arc(this.x, this.y, this.r, 0, 2 * Math.PI)	 
 		ctx.fill()
 	}
-	update() {		
-		this.y -= this.speed
-		this.draw()
+	update() {	
+        if(this.d){
+            this.y -= 7
+		    this.draw()
+        }	
 	}
 }
 
