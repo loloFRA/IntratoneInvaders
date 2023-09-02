@@ -239,7 +239,6 @@ const startGame = () =>  {
    	divStart.style.top = "-300%"
 	divStart.style.opacity = "0"
     	play = true
-	shoots = []
 	badges = []
 	plaques = []
 	booms = [] 
@@ -306,7 +305,6 @@ const init = () => {
 
 const stopGame = () => {	 
 	play = false
-	shoots = []
 	badges = []
 	plaques = []
 	booms = [] 
