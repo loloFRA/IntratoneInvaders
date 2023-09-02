@@ -76,12 +76,12 @@ const poolShoots = () =>{
 
 const createShoot = () => {
         for(let i=0 ;i<shoots.length;i++){
-           if(shoots[i].d == false){
-               shoots[i].d = true
-               shoots[i].x = player.x
+	           if(shoots[i].d == false){
+	               shoots[i].d = true
+	               shoots[i].x = player.x
 		       shoots[i].y = player.y             
-               break;
-           }
+	               break;
+	           }
         }
 }
 
@@ -279,7 +279,7 @@ const initFirebase = () => {
     	firebase.initializeApp(firebaseConfig);
 }
 const init = () => {
-	lastTimeCalled = Date.now();
+	//lastTimeCalled = Date.now();
 	fps = document.getElementById("Fps");
 	W = window.innerWidth <500 ? window.innerWidth : 500
 	H = window.innerHeight;	
@@ -359,7 +359,7 @@ const check = () => {
 			break;
 		}
 		// check plaque / shoot
-			if(plaques[0] && shoots[j]){
+			if(plaques[0] && shoots[j].d){
 				if( collisionPlaqueShoot(plaques[0], shoots[j])){
 					if(plaques[0].life<=1){
 						createBooms(plaques[0].x+plaques[0].w/2+random(plaques[0].w/2,-plaques[0].w/2), plaques[0].y+plaques[0].h/2+random(plaques[0].h/2,-plaques[0].h/2), 4, "white")
@@ -653,7 +653,7 @@ class Player extends Dot{
 class Shoot extends Dot{
 	constructor(x,y,r) {
 		super(x,y,r);
-        this.d = false
+        	this.d = false
 	}
 	draw() {
 		ctx.beginPath()
@@ -662,10 +662,10 @@ class Shoot extends Dot{
 		ctx.fill()
 	}
 	update() {	
-        if(this.d){
-            this.y -= 7
-		    this.draw()
-        }	
+	        if(this.d){
+			this.y -= 7
+			this.draw()
+	        }	
 	}
 }
 
