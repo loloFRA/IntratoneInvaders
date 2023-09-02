@@ -155,14 +155,14 @@ const eventsRadioScores = () => {
 
 // commands scoreboard 
 const closePost = () => {
-    div_post_score.style.top= "300%"
+    div_post_score.style.top= "200%"
     div_post_score.style.opacity= "0"
     divStart.style.top = "0%"
     divStart.style.opacity = "1"
 }
 
 const closeScore = () => {
-    div_score_infos.style.top= "-300%"
+    div_score_infos.style.top= "-200%"
     div_score_infos.style.opacity= "0"
     divStart.style.top = "0%"
     divStart.style.opacity = "1"
@@ -172,7 +172,7 @@ const openScore = () => {
     getScoreDBbyScore()
     div_score_infos.style.top= "0%"
     div_score_infos.style.opacity= "1"
-    divStart.style.top = "300%"
+    divStart.style.top = "200%"
     divStart.style.opacity = "0"
 }
 
@@ -236,7 +236,7 @@ const newConnexion = () => {
 
 const startGame = () =>  {
 	newConnexion()
-   	divStart.style.top = "-300%"
+   	divStart.style.top = "-200%"
 	divStart.style.opacity = "0"
     	play = true
 	badges = []
